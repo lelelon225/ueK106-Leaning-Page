@@ -896,3 +896,34 @@ window. checkAnswer = checkAnswer;
 window.toggleSolution = toggleSolution;
 window.filterModules = filterModules;
 window.resetProgress = resetProgress;
+// Theme toggle function
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Optional: Show notification
+    showNotification(`${newTheme === 'dark' ? '🌙 Dark' : '☀️ Light'} Mode aktiviert!`);
+}
+
+// Load saved theme on page load
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+// Load theme immediately when script loads
+loadTheme();
+
+// Also load theme when DOM is ready (as backup)
+if (document.readyState === 'loading') {
+    document. addEventListener('DOMContentLoaded', loadTheme);
+} else {
+    loadTheme();
+}
+
+// Export to global scope
+window.toggleTheme = toggleTheme;
