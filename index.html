@@ -1,0 +1,45 @@
+sty<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostgreSQL Lernplattform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title">
+                <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1. 66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+                <h1>PostgreSQL Lernplattform</h1>
+            </div>
+            <p class="header-subtitle">
+                Interaktive Übungen zu Datenbanken, SQL und Benutzerverwaltung
+            </p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <p id="progressText" class="progress-text">Fortschritt: 0%</p>
+            </div>
+        </div>
+
+        <!-- Modules Container -->
+        <div id="modulesContainer" class="modules-container"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>PostgreSQL Lernplattform - Übe und meistere Datenbankverwaltung! 🚀</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
