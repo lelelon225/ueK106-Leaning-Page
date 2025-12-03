@@ -137,7 +137,7 @@ ON UPDATE CASCADE;`,
             {
                 id: 'insert-data',
                 title: 'Datensätze hinzufügen',
-                question: 'Füge einen Mitarbeiter mit id=1, name="Max Mustermann", abteilung_id=5 ein.',
+                question: 'Füge einen Mitarbeiter mit id=1, vollname="Max Mustermann", abteilung_id=5 ein.',
                 hint: 'Verwende INSERT INTO',
                 solution: `INSERT INTO employees (id, vollname, abteilung_id) 
 VALUES (1, 'Max Mustermann', 5);`,
