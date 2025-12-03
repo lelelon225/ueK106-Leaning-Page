@@ -174,12 +174,12 @@ WHERE abteilung_id = 5;`,
             {
                 id: 'import-csv-comma',
                 title: 'CSV Import mit Komma-Delimiter',
-                question: 'Importiere Daten aus "mitarbeiter.csv" (Komma-getrennt) in die Tabelle employees.',
+                question: 'Importiere Daten aus "mitarbeiter.csv" (Komma-getrennt) in die Tabelle employees (Spalten vollname, abteilung_id).',
                 hint: 'Verwende COPY ...  FROM ... WITH (FORMAT csv, DELIMITER \',\')',
                 solution: `COPY employees (vollname, abteilung_id)
-FROM '/pfad/zu/mitarbeiter.csv'
-WITH (FORMAT csv, HEADER true, DELIMITER ',');`,
-                explanation: 'COPY FROM importiert Daten effizient.  HEADER true überspringt die erste Zeile.  DELIMITER gibt das Trennzeichen an.'
+FROM '/path/to/mitarbeiter.csv'
+WITH (FORMAT csv, DELIMITER ',');`,
+                explanation: 'COPY FROM importiert Daten effizient.  DELIMITER gibt das Trennzeichen an.'
             },
             {
                 id: 'import-csv-semicolon',
