@@ -203,7 +203,7 @@ WITH (FORMAT csv, DELIMITER ';');`,
             {
                 id: 'dump-schema',
                 title: 'Dump eines Schemas erstellen',
-                question: 'Erstelle einen Dump des Schemas "personal" in die Datei "backup.sql".',
+                question: 'Erstelle einen Dump des Schemas "personal" aus der Datenbank "firma_db" in die Datei "backup.sql".',
                 hint: 'Verwende pg_dump mit -n für Schema',
                 solution: 'pg_dump -d firma_db -n personal -f backup.sql',
                 explanation: 'pg_dump erstellt Backups. -n spezifiziert das Schema, -f die Ausgabedatei.'
