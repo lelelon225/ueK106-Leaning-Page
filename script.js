@@ -187,8 +187,8 @@ WITH (FORMAT csv, DELIMITER ',');`,
                 question: 'Importiere Daten aus "daten.csv" (Semikolon-getrennt).',
                 hint: 'Verwende DELIMITER \';\'',
                 solution: `COPY employees (vollname, abteilung_id)
-FROM '/pfad/zu/daten.csv'
-WITH (FORMAT csv, HEADER true, DELIMITER ';');`,
+FROM '/path/to/daten.csv'
+WITH (FORMAT csv, DELIMITER ';');`,
                 explanation: 'In Europa werden CSVs oft mit Semikolon statt Komma getrennt.  Das Delimiter muss entsprechend angepasst werden.'
             }
         ]
