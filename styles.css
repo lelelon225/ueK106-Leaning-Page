@@ -867,3 +867,44 @@ body {
     page-break-inside: avoid;
   }
 }
+/* Reset Button */
+.reset-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid var(--danger);
+    background: var(--bg-card);
+    color: var(--danger);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .reset-button {
+        width: auto;
+    }
+}
+
+.reset-button svg {
+    width: 1. 25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.reset-button:hover {
+    background: var(--danger);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+}
+
+.reset-button:active {
+    transform: translateY(0);
+}

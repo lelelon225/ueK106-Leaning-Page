@@ -927,3 +927,34 @@ if (document.readyState === 'loading') {
 
 // Export to global scope
 window.toggleTheme = toggleTheme;
+// Confirm before reset with a nicer dialog
+function confirmReset() {
+    const totalCompleted = Object.keys(state. completedTasks).length;
+    
+    if (totalCompleted === 0) {
+        showNotification('⚠️ Kein Fortschritt zum Zurücksetzen vorhanden!');
+        return;
+    }
+    
+    const confirmMessage = `Möchtest du wirklich deinen gesamten Fortschritt zurücksetzen?\n\n✓ ${totalCompleted} abgeschlossene Aufgaben\n📝 Alle eingegebenen Antworten\n\nDiese Aktion kann nicht rückgängig gemacht werden! `;
+    
+    if (confirm(confirmMessage)) {
+        resetProgress();
+    }
+}
+
+// Reset progress function (update the existing one)
+function resetProgress() {
+    state.completedTasks = {};
+    state.userAnswers = {};
+    state.showSolution = {};
+    state.expandedModule = null;
+    localStorage.removeItem('postgresqlLearningState');
+    renderModules();
+    updateProgress();
+    showNotification('🔄 Fortschritt erfolgreich zurückgesetzt!');
+}
+
+// Export to global scope
+window.confirmReset = confirmReset;
+window.resetProgress = resetProgress;

@@ -23,6 +23,22 @@
                     </svg>
                     <h1>PostgreSQL Lernplattform</h1>
                 </div>
+                <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                                </div>
+                                     <p id="progressText" class="progress-text">Fortschritt: 0%</p>
+    
+                                 <!-- Reset Button -->
+                                <button class="reset-button" onclick="confirmReset()" aria-label="Fortschritt zurücksetzen">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 4 1 10 7 10"></polyline>
+                                        <path d="M3. 51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                    </svg>
+                                        Fortschritt zurücksetzen
+                                </button>
+                            </div>
                 
                 <!-- Theme Toggle Button -->
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
