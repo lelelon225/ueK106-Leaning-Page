@@ -521,20 +521,6 @@ WHERE from_date = '2000-01-01';`,
                 explanation: 'Der Index ermöglicht PostgreSQL, schnell alle Zeilen mit dem gesuchten Datum zu finden, ohne die ganze Tabelle zu scannen.'
             },
             {
-                id: 'index-use',
-                title: 'Wann sind Indizes sinnvoll?',
-                question: 'Bei welchen Operationen sind Indizes besonders sinnvoll?',
-                hint: 'Denke an WHERE, JOIN, ORDER BY',
-                solution: `-- Indizes sind sinnvoll für:
--- 1. WHERE Klauseln (Filterung)
--- 2. JOIN Operationen
--- 3. ORDER BY / GROUP BY
--- 4. Foreign Keys
--- 5. Häufige COUNT() Operationen
--- NICHT sinnvoll bei kleinen Tabellen oder häufigen INSERTS/UPDATES`,
-                explanation: 'Indizes beschleunigen Lesezugriffe, verlangsamen aber Schreibvorgänge.  Abwägung notwendig!'
-            },
-            {
                 id: 'index-drop',
                 title: 'Index entfernen',
                 question: 'Entferne den Index "idx_abteilung".',
