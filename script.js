@@ -437,7 +437,7 @@ WHERE gehalt > (
         title: 'Performance Optimierung',
         icon: 'zap',
         color: 'orange',
-        lb: 'lb2',
+        lb: 'lb1',
         tasks: [
             {
                 id: 'timing',
