@@ -10,7 +10,7 @@
   --info: #4299e1;
   
   /* Light Theme */
-  --bg-primary: #f8fafc;
+  --bg-primary: #0b0047;
   --bg-secondary: #ffffff;
   --bg-tertiary: #f1f5f9;
   --bg-card: #ffffff;
@@ -23,8 +23,7 @@
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   --code-bg: #1e293b;
   --code-text: #e2e8f0;
-  background: #0b0047;
-  background: linear-gradient(90deg,rgba(11, 0, 71, 1) 0%, rgba(246, 209, 255, 1) 86%);
+  --gradient-primary: linear-gradient(90deg,rgba(11, 0, 71, 1) 0%, rgba(246, 209, 255, 1) 86%);
 }
 
 [data-theme="dark"] {
