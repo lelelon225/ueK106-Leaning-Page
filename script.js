@@ -554,7 +554,119 @@ COMMIT;`,
                 explanation: 'Isolation Levels: READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE.  Höhere Level = mehr Isolation, weniger Concurrency.'
             }
         ]
-    }
+    },
+{
+        id: 'performance',
+        title: 'Performance Optimierung',
+        icon: 'zap',
+        color: 'orange',
+        lb: 'lb2',
+        tasks: [
+            {
+                id: 'timing',
+                title: 'Timing anzeigen',
+                question: 'Wie aktivierst du die Anzeige der Ausführungszeit in psql?',
+                hint: 'Verwende \\timing',
+                solution: '\\timing on',
+                explanation: '\\timing zeigt die Ausführungszeit jeder Query an.  Hilfreich für Performance-Analyse.'
+            },
+            {
+                id: 'rounding-optimization',
+                title: 'Rundung für Performance',
+                question: 'Berechne das durchschnittliche Gehalt gerundet auf 2 Dezimalstellen. Zeige zwei Varianten: eine ineffiziente und eine effiziente.',
+                hint: 'Überlege, ob du vor oder nach dem AVG() rundest',
+                solution: `-- Ineffiziente Variante (rundet am Ende):
+SELECT ROUND(AVG(salary), 2) FROM employees;
+
+-- Effizientere Variante (rundet früher):
+SELECT AVG(ROUND(salary, -2)) FROM employees;`,
+                explanation: 'Früheres Runden (vor der Aggregation) kann effizienter sein, da mit kleineren Zahlen gerechnet wird. Beachte aber, dass dies das Ergebnis leicht verändern kann!'
+            },
+            {
+                id: 'explain',
+                title: 'Performance Analyse mit EXPLAIN ANALYZE',
+                question: 'Analysiere den Ausführungsplan einer Query auf "employees" mit detaillierten Zeitinformationen.',
+                hint: 'Verwende EXPLAIN ANALYZE',
+                solution: `EXPLAIN ANALYZE 
+SELECT AVG(ROUND(salary, -2)) 
+FROM employees;`,
+                explanation: 'EXPLAIN zeigt den Query-Plan.  ANALYZE führt die Query tatsächlich aus und zeigt echte Ausführungszeiten und Zeilenanzahlen.'
+            },
+            {
+                id: 'index-create-basic',
+                title: 'Index erstellen',
+                question: 'Erstelle einen Index auf der Spalte "abteilung_id" in "employees".',
+                hint: 'Verwende CREATE INDEX',
+                solution: `CREATE INDEX idx_abteilung 
+ON employees(abteilung_id);`,
+                explanation: 'Indizes beschleunigen Suchen.  Sinnvoll bei häufig gefilterten/verbundenen Spalten.'
+            },
+            {
+                id: 'index-btree',
+                title: 'B-Tree Index mit USING',
+                question: 'Erstelle einen B-Tree Index auf der Spalte "email" in der Tabelle "hr.employee".',
+                hint: 'Verwende CREATE INDEX mit USING btree',
+                solution: `CREATE INDEX employee_email_idx 
+ON hr.employee USING btree(email);`,
+                explanation: 'USING btree spezifiziert explizit den Index-Typ. B-Tree ist der Standard und eignet sich für die meisten Vergleichsoperationen.'
+            },
+            {
+                id: 'index-unique',
+                title: 'Unique Index erstellen',
+                question: 'Erstelle einen eindeutigen (UNIQUE) Index auf der Email-Spalte.',
+                hint: 'Verwende CREATE UNIQUE INDEX',
+                solution: `CREATE UNIQUE INDEX employee_email_ukey 
+ON hr.employee USING btree(email);`,
+                explanation: 'UNIQUE INDEX erzwingt Eindeutigkeit und beschleunigt Suchen gleichzeitig. Verhindert doppelte Email-Adressen.'
+            },
+            {
+                id: 'index-date-filter',
+                title: 'Index für Datumsfilterung',
+                question: 'Erstelle einen Index für die Spalte "from_date" in "employees.salary", da häufig nach diesem Datum gefiltert wird.',
+                hint: 'Indizes helfen bei WHERE-Bedingungen',
+                solution: `CREATE INDEX idx_employee_salary_from_date 
+ON employees.salary (from_date);`,
+                explanation: 'Indizes auf Datumsspalten beschleunigen Abfragen mit WHERE-Bedingungen erheblich, besonders bei großen Tabellen.'
+            },
+            {
+                id: 'index-count-optimization',
+                title: 'COUNT mit Index optimieren',
+                question: 'Wie würdest du diese Query optimieren: SELECT COUNT(*) FROM employees.salary WHERE from_date = \'2000-01-01\'',
+                hint: 'Ein Index auf from_date würde helfen',
+                solution: `-- Zuerst Index erstellen:
+CREATE INDEX idx_salary_from_date 
+ON employees.salary (from_date);
+
+-- Dann ist diese Query viel schneller:
+SELECT COUNT(*) 
+FROM employees.salary 
+WHERE from_date = '2000-01-01';`,
+                explanation: 'Der Index ermöglicht PostgreSQL, schnell alle Zeilen mit dem gesuchten Datum zu finden, ohne die ganze Tabelle zu scannen.'
+            },
+            {
+                id: 'index-use',
+                title: 'Wann sind Indizes sinnvoll?',
+                question: 'Bei welchen Operationen sind Indizes besonders sinnvoll?',
+                hint: 'Denke an WHERE, JOIN, ORDER BY',
+                solution: `-- Indizes sind sinnvoll für:
+-- 1. WHERE Klauseln (Filterung)
+-- 2. JOIN Operationen
+-- 3. ORDER BY / GROUP BY
+-- 4. Foreign Keys
+-- 5. Häufige COUNT() Operationen
+-- NICHT sinnvoll bei kleinen Tabellen oder häufigen INSERTS/UPDATES`,
+                explanation: 'Indizes beschleunigen Lesezugriffe, verlangsamen aber Schreibvorgänge.  Abwägung notwendig!'
+            },
+            {
+                id: 'index-drop',
+                title: 'Index entfernen',
+                question: 'Entferne den Index "idx_abteilung".',
+                hint: 'Verwende DROP INDEX',
+                solution: 'DROP INDEX idx_abteilung;',
+                explanation: 'DROP INDEX entfernt einen Index. Die Tabellendaten bleiben unverändert.'
+            }
+        ]
+    },
 ];
 
 // SVG Icon templates
