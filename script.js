@@ -62,7 +62,7 @@ const modules = [
             {
                 id: 'create-table',
                 title: 'Tabelle erstellen',
-                question: 'Erstelle eine Tabelle "mitarbeiter" mit den Spalten: id (INT, Primary Key), name (VARCHAR(100)), abteilung_id (INT, Foreign Key)',
+                question: 'Erstelle eine Tabelle "mitarbeiter" mit den Spalten: id (SERIAL, Primary Key), name (VARCHAR(100)), abteilung_id (INT, Foreign Key)',
                 hint: 'Verwende CREATE TABLE mit PRIMARY KEY und FOREIGN KEY Constraints',
                 solution: `CREATE TABLE mitarbeiter (
     id SERIAL PRIMARY KEY,
