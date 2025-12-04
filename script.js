@@ -470,15 +470,6 @@ FROM employees;`,
                 explanation: 'EXPLAIN zeigt den Query-Plan.  ANALYZE führt die Query tatsächlich aus und zeigt echte Ausführungszeiten und Zeilenanzahlen.'
             },
             {
-                id: 'index-create-basic',
-                title: 'Index erstellen',
-                question: 'Erstelle einen Index auf der Spalte "abteilung_id" in "employees".',
-                hint: 'Verwende CREATE INDEX',
-                solution: `CREATE INDEX idx_abteilung 
-ON employees(abteilung_id);`,
-                explanation: 'Indizes beschleunigen Suchen.  Sinnvoll bei häufig gefilterten/verbundenen Spalten.'
-            },
-            {
                 id: 'index-btree',
                 title: 'B-Tree Index mit USING',
                 question: 'Erstelle einen B-Tree Index auf der Spalte "email" in der Tabelle "hr.employee".',
